@@ -1231,7 +1231,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 836306522}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c72a7661a730a684a9c8dbe080a87f89, type: 3}
   m_Name: 
@@ -3344,13 +3344,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2109621829}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8ae27c7dc408ba040a04f3d7ef321858, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   projetil: {fileID: 9037258939580766347, guid: c042b0e0b44b181478bdcec928605cb1, type: 3}
-  distaciaVisao: 10
+  distaciaVisao: 8
   velocidade: 2
   alvo: {fileID: 0}
 --- !u!54 &2109621836
