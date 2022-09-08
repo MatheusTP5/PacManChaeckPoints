@@ -2,20 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Ataque : MonoBehaviour
+public class Perseguir : MonoBehaviour
 {
-    public GameObject projetil;
+    //public GameObject projetil;
     public float distaciaVisao;
     public float velocidade;
     public GameObject alvo;
     Vector3 posicaoIdle;
     bool atacando;
 
-
+    
 
     int IDLE = 0;
     int PERSEGUIR = 1;
-    int ATACAR = 2;
+    //int ATACAR = 2;
     int estado;
 
     void Idle()
@@ -24,36 +24,13 @@ public class Ataque : MonoBehaviour
             posicaoIdle, velocidade * Time.deltaTime);
     }
 
-    void Perseguir()
+    void PerseguirI()
     {
         transform.position = Vector3.MoveTowards(transform.position,
             alvo.transform.position, velocidade * Time.deltaTime);
     }
 
-    void Atacar()
-    {
-        if (atacando == false)
-        {
-            transform.LookAt(alvo.transform);
-            StartCoroutine(Atirar());
-            atacando = true;
-        }
-    }
 
-
-    IEnumerator Atirar()
-    {
-        yield return new WaitForSeconds(0.3f);
-        if (estado == ATACAR)
-        {
-            Instantiate(projetil, transform.position, transform.rotation);
-            StartCoroutine(Atirar());
-        }
-        else
-        {
-            atacando = false;
-        }
-    }
 
     void FSM()
     {
@@ -63,12 +40,12 @@ public class Ataque : MonoBehaviour
         }
         else if (estado == PERSEGUIR)
         {
-            Perseguir();
+            PerseguirI();
         }
-        else if (estado == ATACAR)
+        /*else if (estado == ATACAR)
         {
             Atacar();
-        }
+        }*/
     }
 
 
@@ -80,6 +57,7 @@ public class Ataque : MonoBehaviour
         // OBTEM O JOGADOR
         alvo = GameObject.Find("Player");
 
+        
     }
 
 
@@ -96,15 +74,12 @@ public class Ataque : MonoBehaviour
         {
             if (d < distaciaVisao / 2)
             {
-                estado = ATACAR;
-            }
-            else
-            {
                 estado = PERSEGUIR;
             }
+
         }
 
-
+        // MAQUINA DE ESTADO
         FSM();
 
     }
